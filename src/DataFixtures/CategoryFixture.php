@@ -25,8 +25,8 @@ class CategoryFixture extends AbstractFixture
 
     public function afterInstanciate(object $object): object
     {
-        $this->addReference('cat-' . static::$count, $object);
         ++static::$count;
+        $this->addReference('cat-' . static::$count, $object);
 
         return parent::afterInstanciate($object);
     }

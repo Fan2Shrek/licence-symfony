@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -39,12 +41,16 @@ class Project
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
+    #[ORM\ManyToMany(targetEntity: Language::class)]
+    private Collection $languages;
+
     public function __construct(
         string $name,
         string $description,
         \DateTime $startedAt,
-        ?string $link = null,
         Category $category,
+        ?string $link = null,
+        array $languages = [],
     ) {
         $this->name = $name;
         $this->description = $description;
@@ -54,6 +60,7 @@ class Project
 
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
+        $this->languages = new ArrayCollection($languages);
     }
 
     public function getId(): ?int
@@ -139,6 +146,30 @@ class Project
     public function setCategory(Category $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Language>
+     */
+    public function getLanguages(): Collection
+    {
+        return $this->languages;
+    }
+
+    public function addLanguage(Language $language): static
+    {
+        if (!$this->languages->contains($language)) {
+            $this->languages->add($language);
+        }
+
+        return $this;
+    }
+
+    public function removeLanguage(Language $language): static
+    {
+        $this->languages->removeElement($language);
 
         return $this;
     }

@@ -22,36 +22,55 @@ class ProjectFixtures extends AbstractFixture implements DependentFixtureInterfa
             'description' => $faker->text(),
             'link' => $faker->url(),
             'startedAt' => $faker->dateTime(),
-            'category' => $this->getReference('cat-' . rand(0, CategoryFixture::getCount())),
+            'category' => $this->getReference('cat-' . rand(1, CategoryFixture::getCount())),
+            'languages' => $this->randomLanguage(),
         ];
         yield [
             'name' => $faker->word(),
             'description' => $faker->text(),
             'link' => $faker->url(),
             'startedAt' => $faker->dateTime(),
-            'category' => $this->getReference('cat-' . rand(0, CategoryFixture::getCount())),
+            'category' => $this->getReference('cat-' . rand(1, CategoryFixture::getCount())),
+            'languages' => $this->randomLanguage(),
         ];
         yield [
             'name' => $faker->word(),
             'description' => $faker->text(),
             'link' => $faker->url(),
             'startedAt' => $faker->dateTime(),
-            'category' => $this->getReference('cat-' . rand(0, CategoryFixture::getCount())),
+            'category' => $this->getReference('cat-' . rand(1, CategoryFixture::getCount())),
+            'languages' => $this->randomLanguage(),
         ];
         yield [
             'name' => $faker->word(),
             'description' => $faker->text(),
             'link' => $faker->url(),
             'startedAt' => $faker->dateTime(),
-            'category' => $this->getReference('cat-' . rand(0, CategoryFixture::getCount())),
+            'category' => $this->getReference('cat-' . rand(1, CategoryFixture::getCount())),
+            'languages' => $this->randomLanguage(),
         ];
         yield [
             'name' => $faker->word(),
             'description' => $faker->text(),
             'link' => $faker->url(),
             'startedAt' => $faker->dateTime(),
-            'category' => $this->getReference('cat-' . rand(0, CategoryFixture::getCount())),
+            'category' => $this->getReference('cat-' . rand(1, CategoryFixture::getCount())),
+            'languages' => $this->randomLanguage(),
         ];
+    }
+
+    private function randomLanguage(): array
+    {
+        $languages = [];
+        for ($i = 0; $i < rand(1, LanguageFixture::getCount() - 1); $i++) {
+            do {
+                $id = rand(1, LanguageFixture::getCount());
+            } while (in_array($id, array_keys($languages)));
+
+            $languages[$id] = $this->getReference('lang-' . $id);
+        }
+
+        return array_values($languages);
     }
 
     public function getDependencies(): array
