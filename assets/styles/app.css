@@ -1,3 +1,70 @@
-body {
-    background-color: skyblue;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+nav {
+    border-bottom: 1px solid black;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav .links {
+    display: flex;
+    gap: 20px;
+}
+
+nav .links ul li {
+    list-style: none;
+    display: inline;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+nav .links ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+/* login */
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid black;
+    border-radius: 7%;
+    padding: 20px;
+}
+
+.login form input {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.login form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.alert.alert-danger {
+    color: red;
+    text-align: center;
 }
