@@ -76,6 +76,7 @@ class Project
     public function setName(string $name): static
     {
         $this->name = $name;
+        $this->update();
 
         return $this;
     }
@@ -88,6 +89,7 @@ class Project
     public function setDescription(string $description): static
     {
         $this->description = $description;
+        $this->update();
 
         return $this;
     }
@@ -100,6 +102,7 @@ class Project
     public function setLink(?string $link): static
     {
         $this->link = $link;
+        $this->update();
 
         return $this;
     }
@@ -117,6 +120,7 @@ class Project
     public function setFinishedAt(\DateTime $finishedAt): static
     {
         $this->finishedAt = $finishedAt;
+        $this->update();
 
         return $this;
     }
@@ -134,6 +138,7 @@ class Project
     public function setUpdatedAt(\DateTime $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
+        $this->update();
 
         return $this;
     }
@@ -146,6 +151,7 @@ class Project
     public function setCategory(Category $category): static
     {
         $this->category = $category;
+        $this->update();
 
         return $this;
     }
@@ -162,6 +168,7 @@ class Project
     {
         if (!$this->languages->contains($language)) {
             $this->languages->add($language);
+            $this->update();
         }
 
         return $this;
@@ -170,7 +177,13 @@ class Project
     public function removeLanguage(Language $language): static
     {
         $this->languages->removeElement($language);
+        $this->update();
 
         return $this;
+    }
+
+    private function update(): void
+    {
+        $this->updatedAt = new \DateTime();
     }
 }

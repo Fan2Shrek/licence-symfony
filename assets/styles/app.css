@@ -5,6 +5,9 @@
 
 }
 
+.content {
+    margin-top: 100px;
+}
 nav {
     border-bottom: 1px solid black;
     height: 75px;
@@ -14,6 +17,9 @@ nav {
     padding: 0 20px;
 }
 
+nav .logo img {
+    height: 150px;
+}
 nav .links {
     display: flex;
     gap: 20px;
@@ -37,7 +43,6 @@ nav .links ul li a {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh;
 }
 
 .login form {

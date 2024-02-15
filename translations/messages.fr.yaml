@@ -1,0 +1,15 @@
+name: Nom
+link: Lien
+description: Description
+category: Catégorie
+
+project:
+  edit: Modifier %name%
+
+crud:
+  add: Ajouter
+  edit: Modifier
+  delete: Supprimer
+  save: Enregistrer
+  index: Liste des %name%
+  new: Nouveau %name%
