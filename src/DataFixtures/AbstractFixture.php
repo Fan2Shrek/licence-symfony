@@ -11,6 +11,7 @@ abstract class AbstractFixture extends Fixture
     {
         foreach ($this->getData() as $data) {
             $object = new ($this->getClass())(...$data);
+            $this->afterInstanciate($object);
 
             $manager->persist($object);
         }
@@ -21,4 +22,9 @@ abstract class AbstractFixture extends Fixture
     abstract public function getData(): iterable;
 
     abstract public function getClass(): string;
+
+    public function afterInstanciate(object $object): object
+    {
+        return $object;
+    }
 }
