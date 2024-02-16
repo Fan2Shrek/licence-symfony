@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ProjectCrudController extends AbstractCrudController
@@ -41,6 +42,7 @@ class ProjectCrudController extends AbstractCrudController
             TextField::new('name', $this->translator->trans('name')),
             TextField::new('link', $this->translator->trans('link')),
             TextEditorField::new('description', $this->translator->trans('description'))->hideOnIndex(),
+            ImageField::new('imagePath', $this->translator->trans('image'))->hideOnIndex()->setUploadDir('public/img/projects/'),
             AssociationField::new('category', $this->translator->trans('category'))->renderAsNativeWidget()->setFormTypeOption('choice_label', 'name'),
             AssociationField::new('languages')->setFormTypeOption('choice_label', 'name'),
         ];

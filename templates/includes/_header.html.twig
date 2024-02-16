@@ -4,10 +4,11 @@
     </div>
     <div class="links">
         <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="about.php">About Us</a></li>
-            <li><a href="services.php">Services</a></li>
-            <li><a href={{ path('app_login') }}>Se connecter</a></li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li><a href={{ path('admin') }}>Back office</a></li>
+            {% else %}
+                <li><a href={{ path('app_login') }}>Se connecter</a></li>
+            {% endif %}
         </ul>
     </div>
 </nav>

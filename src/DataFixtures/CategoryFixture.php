@@ -11,11 +11,10 @@ class CategoryFixture extends AbstractFixture
 
     public function getData(): iterable
     {
-        $faker = Factory::create();
-
-        yield ['name' => $faker->word()];
-        yield ['name' => $faker->word()];
-        yield ['name' => $faker->word()];
+        yield ['name' => "Projet personnel"];
+        yield ['name' => "E-Commerce"];
+        yield ['name' => "Application mobile"];
+        yield ['name' => "Veille technologique"];
     }
 
     public function getClass(): string

@@ -8,18 +8,39 @@
 .content {
     margin-top: 100px;
 }
+.divider {
+    height: 3px;
+    background-color: blue;
+    margin: 1rem auto;
+    width: 125px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-align: center;
+}
+
+/* navbar */
 nav {
     border-bottom: 1px solid black;
     height: 75px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    top: 0px;
     padding: 0 20px;
+    width: 100%;
+        position: absolute;
 }
 
 nav .logo img {
     height: 150px;
 }
+
 nav .links {
     display: flex;
     gap: 20px;
@@ -72,4 +93,88 @@ nav .links ul li a {
 .alert.alert-danger {
     color: red;
     text-align: center;
+}
+
+.project-container {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.project-card {
+    width: 400px;
+    border: 1px solid black;
+    border-radius: 20px;
+    height: 324px;
+    position: relative;
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    opacity: 0.2;
+}
+
+.project-card > *:not(img) {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20%;
+}
+
+a .project-card {
+    text-decoration: none;
+    color: white;
+}
+
+.background img {
+    width: 100vw;
+    height: 200px;
+    position: absolute;
+    top: 75px;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+.project-page h1 {
+    font-size: 4em;
+    margin-top: 125px;
+}
+
+.project-body {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: row;
+}
+
+.project-content p {
+    font-size: 3em;
+    text-align: center;
+}
+
+.project-body .project-content {
+    width: 70%;
+}
+
+.project-body .project-info {
+    width: 30%;
+    text-align: center;
+}
+
+.project-body .project-info h2 {
+    font-size: 2em;
+    margin-block: 20px;
+}
+
+.project-body .project-info h3 {
+    font-size: 1.75em;
+    margin-block: 20px;
+}
+
+.project-body .project-info p {
+    font-size: 1.5em;
 }

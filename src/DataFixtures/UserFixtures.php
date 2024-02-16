@@ -21,4 +21,11 @@ class UserFixtures extends AbstractFixture
     {
         yield ['email' => 'admin@admin.fr', 'password' => $this->passwordHasher->hash('admin')];
     }
+
+    public function afterInstanciate(object $object): object
+    {
+        $object->setRoles(['ROLE_ADMIN']);
+
+        return parent::afterInstanciate($object);
+    }
 }

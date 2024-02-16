@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
@@ -24,6 +25,11 @@ class Project
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $link = null;
+
+    private File $thumbnail;
+
+    #[ORM\Column]
+    private string $imagePath;
 
     #[ORM\Column]
     private ?\DateTime $startedAt;
@@ -103,6 +109,30 @@ class Project
     {
         $this->link = $link;
         $this->update();
+
+        return $this;
+    }
+
+    public function getThumbnail(): File
+    {
+        return $this->thumbnail;
+    }
+
+    public function setThumbnail(File $thumbnail): static
+    {
+        $this->thumbnail = $thumbnail;
+
+        return $this;
+    }
+
+    public function getImagePath(): string
+    {
+        return $this->imagePath;
+    }
+
+    public function setImagePath(string $imagePath): static
+    {
+        $this->imagePath = $imagePath;
 
         return $this;
     }

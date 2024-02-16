@@ -49,14 +49,16 @@ class ProjectFixtures extends AbstractFixture implements DependentFixtureInterfa
             'category' => $this->getReference('cat-' . rand(1, CategoryFixture::getCount())),
             'languages' => $this->randomLanguage(),
         ];
-        yield [
-            'name' => $faker->word(),
-            'description' => $faker->text(),
-            'link' => $faker->url(),
-            'startedAt' => $faker->dateTime(),
-            'category' => $this->getReference('cat-' . rand(1, CategoryFixture::getCount())),
-            'languages' => $this->randomLanguage(),
-        ];
+    }
+
+    public function afterInstanciate(object $object): object
+    {
+        $faker = Factory::create();
+
+        $path = $faker->image('public/img/projects', 640, 480);
+        $object->setImagePath(substr($path, 20));
+
+        return parent::afterInstanciate($object);
     }
 
     private function randomLanguage(): array
