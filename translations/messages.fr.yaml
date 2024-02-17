@@ -13,3 +13,16 @@ crud:
   save: Enregistrer
   index: Liste des %name%
   new: Nouveau %name%
+
+dashboard:
+  index: Tableau de bord
+  home: Retour au site
+
+  session:
+    crud: Gestion
+
+  crud:
+    project: Projets
+    category: Catégories
+    language: Langages
+    user: Utilisateurs

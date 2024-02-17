@@ -24,6 +24,17 @@ h6 {
     text-align: center;
 }
 
+.btn {
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.btn-view {
+    background-color: blue;
+    color: white;
+}
 /* navbar */
 nav {
     border-bottom: 1px solid black;
@@ -149,9 +160,10 @@ a .project-card {
     margin-top: 10%;
     display: flex;
     flex-direction: row;
+    margin-top: 120px;
 }
 
-.project-content p {
+.project-content > * {
     font-size: 3em;
     text-align: center;
 }
@@ -167,7 +179,6 @@ a .project-card {
 
 .project-body .project-info h2 {
     font-size: 2em;
-    margin-block: 20px;
 }
 
 .project-body .project-info h3 {
@@ -177,4 +188,17 @@ a .project-card {
 
 .project-body .project-info p {
     font-size: 1.5em;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    border-top: 1px solid black;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: gray;
+    color: white;
 }

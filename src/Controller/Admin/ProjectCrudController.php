@@ -38,14 +38,17 @@ class ProjectCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
-            TextField::new('name', $this->translator->trans('name')),
-            TextField::new('link', $this->translator->trans('link')),
-            TextEditorField::new('description', $this->translator->trans('description'))->hideOnIndex(),
-            ImageField::new('imagePath', $this->translator->trans('image'))->hideOnIndex()->setUploadDir('public/img/projects/'),
-            AssociationField::new('category', $this->translator->trans('category'))->renderAsNativeWidget()->setFormTypeOption('choice_label', 'name'),
-            AssociationField::new('languages')->setFormTypeOption('choice_label', 'name'),
-        ];
+        $imageField = ImageField::new('imagePath', $this->translator->trans('image'))->hideOnIndex()->setUploadDir('public/img/projects/');
+        if ($pageName != 'new') {
+            $imageField->setRequired(false);
+        }
+
+        yield TextField::new('name', $this->translator->trans('name'));
+        yield TextEditorField::new('description', $this->translator->trans('description'))->hideOnIndex();
+        yield AssociationField::new('category', $this->translator->trans('category'))->renderAsNativeWidget()->setFormTypeOption('choice_label', 'name');
+        yield $imageField;
+        yield AssociationField::new('languages')->setFormTypeOption('choice_label', 'name');
+        yield TextField::new('link', $this->translator->trans('link'));
     }
 
     public function createEntity(string $entityFqcn)

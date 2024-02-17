@@ -13,10 +13,17 @@ use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use App\Entity\Project;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Controller\Admin\ProjectCrudController;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class DashboardController extends AbstractDashboardController
 {
+    public function __construct(
+        private TranslatorInterface $translator
+    ) {
+    }
+
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
@@ -32,12 +39,14 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToDashboard($this->translator->trans('dashboard.index'), 'fa fa-home');
+        yield MenuItem::linkToRoute($this->translator->trans('dashboard.home'), 'fa fa-backward', 'home');
 
-        yield MenuItem::section('Gestion');
-        yield MenuItem::linkToCrud('Projets', 'fa fa-list-check', Project::class);
-        yield MenuItem::linkToCrud('Categories', 'fa fa-list', Category::class);
-        yield MenuItem::linkToCrud('Langages', 'fa fa-file-audio', Language::class);
+        yield MenuItem::section($this->translator->trans('dashboard.session.crud'));
+        yield MenuItem::linkToCrud($this->translator->trans('dashboard.crud.project'), 'fa fa-list-check', Project::class);
+        yield MenuItem::linkToCrud($this->translator->trans('dashboard.crud.category'), 'fa fa-list', Category::class);
+        yield MenuItem::linkToCrud($this->translator->trans('dashboard.crud.language'), 'fa fa-file-audio', Language::class);
+        yield MenuItem::linkToCrud($this->translator->trans('dashboard.crud.user'), 'fa fa-user', User::class);
     }
 
     public function configureUserMenu(UserInterface $user): UserMenu

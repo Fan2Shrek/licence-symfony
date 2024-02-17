@@ -32,8 +32,6 @@ class CategoryCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
-            TextField::new('name', $this->translator->trans('name')),
-        ];
+        yield TextField::new('name', $this->translator->trans('name'));
     }
 }

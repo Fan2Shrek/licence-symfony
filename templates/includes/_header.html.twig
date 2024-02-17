@@ -6,7 +6,14 @@
         <ul>
             {% if is_granted('ROLE_ADMIN') %}
                 <li><a href={{ path('admin') }}>Back office</a></li>
+                <li><a href={{ path('app_logout') }}>Se déconnecter</a></li>
+
+            {% elseif is_granted('ROLE_USER') %}
+                <li>{{ app.user.email  }}</li>
+                <li><a href={{ path('app_logout') }}>Se déconnecter</a></li>
+
             {% else %}
+                <li><a href={{ path('app_register') }}>Se créer un compte</a></li>
                 <li><a href={{ path('app_login') }}>Se connecter</a></li>
             {% endif %}
         </ul>

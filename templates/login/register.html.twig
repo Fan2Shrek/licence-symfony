@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Créer un compte{% endblock %}
+
+{% block content %}
+    <h1>Créer un compte</h1>
+    <div class='divider'></div>
+
+    <div class='login'>
+        <div class="alert alert-danger">
+            {{ form_errors(registrationForm) }}
+        </div>
+
+        {{ form_start(registrationForm) }}
+
+        {{ form_label(registrationForm.email) }}
+        {{ form_widget(registrationForm.email) }}
+
+        {{ form_label(registrationForm.plainPassword) }}
+        {{ form_widget(registrationForm.plainPassword) }}
+
+        {{ form_row(registrationForm.submit) }}
+
+        {{ form_end(registrationForm) }}
+    </div>
+
+{% endblock %}
