@@ -25,3 +25,4 @@
 ###< symfony/asset-mapper ###
 
 /public/img/projects/*
+!/public/img/projects/.gitkeep
