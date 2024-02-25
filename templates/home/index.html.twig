@@ -1,9 +1,9 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Bienvenue !{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block content %}
-    <h1>Projets</h1>
+    <h1>{{"tpl.main.projects"|trans()}}</h1>
     <div class='project-container'>
         {% for project in projects %}
             <a href={{ path('app_project', {'name': project.name}) }}>

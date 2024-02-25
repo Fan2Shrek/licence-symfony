@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}{{ project.name|capitalize }}{% endblock %}
+
 {% block content %}
     <div class='project-page'>
         <div class='background'>
@@ -12,19 +14,19 @@
                 <p>{{project.description|raw}}</p>
             </div>
             <div class='project-info'>
-                <h2>Informations</h2>
+                <h2>{{"tpl.view.information"|trans}}</h2>
                 <div class='divider'></div>
                 {% if project.link is not null %}
-                    <a href="{{project.link}}" target="_blank" class='btn btn-view'>Lien vers le projet</a>
+                    <a href="{{project.link}}" target="_blank" class='btn btn-view'>{{"tpl.view.link"|trans}}</a>
                 {% endif %}
-                <h3>Créer le</h3>
+                <h3>{{"tpl.view.createdAt"|trans}}</h3>
                 <p>{{project.createdAt|date("m/d/Y")}}</p>
-                <h3>Dernière modification le</h3>
+                <h3>{{"tpl.view.updatedAt"|trans}}</h3>
                 <p>{{project.updatedAt|date("m/d/Y")}}</p>
-                <h3>Commencer le</h3>
+                <h3>{{"tpl.view.startedAt"|trans}}</h3>
                 <p>{{project.startedAt|date("m/d/Y")}}</p>
                 {% if project.finishedAt is defined %}
-                    <h3>Fini le</h3>
+                    <h3>{{"tpl.view.endedAt"|trans}}</h3>
                     <p>{{project.finishedAt|date("m/d/Y")}}</p>
                 {% endif %}
             </div>

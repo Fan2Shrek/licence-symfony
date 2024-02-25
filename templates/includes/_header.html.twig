@@ -5,16 +5,16 @@
     <div class="links">
         <ul>
             {% if is_granted('ROLE_ADMIN') %}
-                <li><a href={{ path('admin') }}>Back office</a></li>
-                <li><a href={{ path('app_logout') }}>Se déconnecter</a></li>
+                <li><a href={{ path('admin') }}>{{ "tpl.navbar.backOffice"|trans }}</a></li>
+                <li><a href={{ path('app_logout') }}>{{ "tpl.navbar.logout"|trans }}</a></li>
 
             {% elseif is_granted('ROLE_USER') %}
                 <li>{{ app.user.email  }}</li>
-                <li><a href={{ path('app_logout') }}>Se déconnecter</a></li>
+                <li><a href={{ path('app_logout') }}>{{ "tpl.navbar.logout"|trans }}</a></li>
 
             {% else %}
-                <li><a href={{ path('app_register') }}>Se créer un compte</a></li>
-                <li><a href={{ path('app_login') }}>Se connecter</a></li>
+                <li><a href={{ path('app_register') }}>{{ "tpl.navbar.register"|trans }}</a></li>
+                <li><a href={{ path('app_login') }}>{{ "tpl.navbar.login"|trans }}</a></li>
             {% endif %}
         </ul>
     </div>

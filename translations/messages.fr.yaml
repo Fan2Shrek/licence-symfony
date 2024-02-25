@@ -26,3 +26,19 @@ dashboard:
     category: Catégories
     language: Langages
     user: Utilisateurs
+
+tpl:
+  main:
+    projects: Projets
+  navbar:
+    logout: Déconnexion
+    login: Connexion
+    register: Inscription
+    backOffice: Administration
+  view:
+    information: Informations
+    createdAt: Créé le
+    updatedAt: Modifié le
+    startedAt: Débuté le
+    endedAt: Terminé le
+    link: Lien vers le projet
