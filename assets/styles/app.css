@@ -169,7 +169,8 @@ a .project-card {
 }
 
 .project-body .project-content {
-    width: 70%;
+    margin-left: 40px;
+    width: 75%;
 }
 
 .project-body .project-info {
@@ -201,4 +202,5 @@ footer {
     width: 100%;
     background-color: gray;
     color: white;
+    position: fixed;
 }
